@@ -22,7 +22,7 @@
  getSupportFragmentManager().beginTransaction()
           .add(R.id.fl_activity_city_picker_container, cityPickerFragment).commit();
   
-  在需要的定位显示的地方直接调用：
+  定位监听：
   
   LocationUtils.getInstance().setLocationListener(new LocationUtils.LocationListener() {
         
