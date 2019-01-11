@@ -26,7 +26,7 @@ public class SecondActivity extends AppCompatActivity  {
             @Override
             public void onSuccess(BDLocation location) {
                 Log.d("ss== onSuccess",location.getCity());
-                cityPickerFragment.updateLocateState(LocateState.SUCCESS, location.getCity());
+                cityPickerFragment.updateLocateState(LocateState.SUCCESS, location.getCity().replaceAll("市", ""));
                 LocationUtils.getInstance().stop();
             }
 
