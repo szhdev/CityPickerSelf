@@ -4,36 +4,39 @@
 
 没有特殊要求可以参考以下使用方法
 
+可以在需要的地方直接使用
+
 使用：
 
 第一步
-
-  初始化：  LocationUtils.getInstance().setContext(this);
+ 
+  初始化：  建议在Application中
+  
+  LocationUtils.getInstance().setContext(this);
   
 第二部
-
-  LocationUtils.getInstance().setLocationListener(new LocationUtils.LocationListener() {
   
+  创建Activity引入CityPickerFragment;
+
+ cityPickerFragment = new CityPickerFragment();
+ getSupportFragmentManager().beginTransaction()
+          .add(R.id.fl_activity_city_picker_container, cityPickerFragment).commit();
+  
+  在需要的定位显示的地方直接调用：
+  
+  LocationUtils.getInstance().setLocationListener(new LocationUtils.LocationListener() {
+        
+            //成功
             @Override
             public void onSuccess(BDLocation location) {
                 Log.d("ss== onSuccess",location.getCity());
                 cityPickerFragment.updateLocateState(LocateState.SUCCESS, location.getCity());
                 LocationUtils.getInstance().stop();
             }
-
+            
             @Override
             public void onError(BDLocation location) {
                 Log.d("ss== onError",String.valueOf(location.getLocType()));
                 cityPickerFragment.updateLocateState(LocateState.FAILED, null);
             }
         }).start();
-
-
-当然因为是在Activity中加载的Fragment 中所以
-
- protected void initView() {
- 
-        cityPickerFragment = new CityPickerFragment();
-        getSupportFragmentManager().beginTransaction()
-                .add(R.id.fl_activity_city_picker_container, cityPickerFragment).commit();
-    }
