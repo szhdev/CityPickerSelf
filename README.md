@@ -19,6 +19,7 @@
   创建Activity引入CityPickerFragment;
 
  cityPickerFragment = new CityPickerFragment();
+ 
  getSupportFragmentManager().beginTransaction()
           .add(R.id.fl_activity_city_picker_container, cityPickerFragment).commit();
   
