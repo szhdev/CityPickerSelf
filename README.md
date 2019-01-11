@@ -14,7 +14,7 @@
   
   LocationUtils.getInstance().setContext(this);
   
-第二部
+第二步
   
   创建Activity引入CityPickerFragment;
 
