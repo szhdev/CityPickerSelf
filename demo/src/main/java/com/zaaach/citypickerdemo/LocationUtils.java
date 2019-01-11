@@ -55,7 +55,9 @@ public class LocationUtils {
 
     public void start(){
         init();
-        mLocationClient.start();
+        if(!mLocationClient.isStarted()){
+            mLocationClient.start();
+        }
     }
 
     public void stop(){

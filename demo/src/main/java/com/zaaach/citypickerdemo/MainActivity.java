@@ -68,6 +68,11 @@ public class MainActivity extends AppCompatActivity {
                 REQUEST_CODE_PICK_CITY);
     }
 
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        LocationUtils.getInstance().onDestory();
+    }
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
